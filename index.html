@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="id"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f8f0ec"><title>A Letter for You</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&family=Parisienne&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#fffaf5;--rose:#c9878c;--ink:#59494a;--muted:#9b8584;--line:#ead9d4}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 15%,#fff 0,transparent 35%),linear-gradient(145deg,#f7eeea,#f3e6e3 55%,#f9f2ec);color:var(--ink);font-family:'DM Sans',sans-serif}
+body:before,body:after{content:"✿";position:fixed;color:#d8b3ae;opacity:.2;font-size:130px;pointer-events:none}body:before{top:4%;left:-35px}body:after{right:-25px;bottom:4%;font-size:170px}
+main{position:relative;z-index:1}.screen{min-height:100svh;display:grid;place-items:center;padding:30px 16px}.panel{width:min(650px,100%);text-align:center}
+.eyebrow{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
+h1,h2{font-family:'Cormorant Garamond',serif;font-weight:400;color:#76575b}h1{font-size:clamp(44px,10vw,70px);line-height:.98;margin:16px 0}h2{font-size:clamp(32px,7vw,46px);margin:8px 0}
+.sub{font-size:13px;line-height:1.8;color:#927c7b;max-width:390px;margin:0 auto 22px}
+.card{background:var(--paper);border:1px solid var(--line);padding:clamp(24px,6vw,48px);box-shadow:0 18px 55px #795b5b14}
+input,button{font:inherit}input{width:100%;padding:14px;border:1px solid #e5d2ce;border-radius:10px;background:#fffdfa;color:var(--ink);margin:7px 0}
+button{border:0;border-radius:99px;padding:13px 22px;background:#93676e;color:#fffaf5;cursor:pointer;font-size:12px;letter-spacing:.06em;margin-top:10px}
+button:disabled{opacity:.55;cursor:wait}.note,.status{font-size:12px;color:var(--muted);line-height:1.7}.status{min-height:22px;color:#865c62}
+.envelope-wrap{width:min(330px,85vw);height:220px;margin:28px auto;position:relative;cursor:pointer;filter:drop-shadow(0 17px 18px #96717425)}
+.envelope{position:absolute;inset:28px 0 0;background:linear-gradient(145deg,#e4c1c0,#c98f95);border-radius:5px 5px 10px 10px}
+.envelope:before{content:"";position:absolute;inset:0;background:linear-gradient(145deg,#e4c1c0,#c98f95);clip-path:polygon(0 0,50% 57%,100% 0,100% 100%,0 100%);z-index:3}
+.envelope:after{content:"";position:absolute;inset:0;background:linear-gradient(35deg,#c98f95,#e6c5c1);clip-path:polygon(0 100%,50% 45%,100% 100%);z-index:4}
+.flap{position:absolute;inset:0 0 auto;height:60%;background:#e7c5c2;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform 1s;z-index:5}
+.seal{position:absolute;z-index:6;left:50%;top:54%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:#a96e78;color:#fff2e9;display:grid;place-items:center;font-size:23px;transition:.4s}
+.peek{position:absolute;z-index:2;left:8%;right:8%;height:165px;bottom:12px;background:#fffaf4;border-radius:4px;display:grid;place-items:center;color:#b17d80;font-family:'Parisienne',cursive;font-size:26px;transition:transform 1s}
+.envelope-wrap.open .flap{transform:rotateX(180deg);z-index:1}.envelope-wrap.open .seal{opacity:0}.envelope-wrap.open .peek{transform:translateY(-115px)}
+.paper{width:min(760px,100%);background:var(--paper);padding:clamp(28px,7vw,65px);border:1px solid var(--line);box-shadow:0 22px 70px #795b5b17;position:relative;text-align:left;animation:rise .9s both}
+.paper:before{content:"";position:absolute;inset:12px;border:1px solid #efe2dc;pointer-events:none}
+@keyframes rise{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}
+.paperhead{text-align:center;margin-bottom:30px}.flower{font-size:25px;color:#c58f91}.to{font-family:'Parisienne',cursive;font-size:27px;color:#b47d83;margin-top:10px}
+.bodycopy{font-family:'Cormorant Garamond',serif;font-size:21px;line-height:1.75;color:#625354;white-space:pre-wrap;overflow-wrap:anywhere}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:12px;margin:28px 0}.gallery img{width:100%;aspect-ratio:4/5;object-fit:cover;border:1px solid var(--line);padding:4px;background:white}
+.closing{font-family:'Parisienne',cursive;font-size:30px;color:#986c73;text-align:right;margin-top:28px}.sign{text-align:right;color:var(--muted);font-size:12px}
+.hidden{display:none!important}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body><main>
+<section class="screen" id="loading"><div class="panel"><div class="eyebrow">a little something, made for you</div><h1>A Letter<br><span style="font-family:Parisienne">for You</span></h1><p class="sub">Sebentar, kami sedang menyiapkan suratmu…</p><div class="status" id="loadStatus"></div></div></section>
+<section class="screen hidden" id="envelopeScreen"><div class="panel">
+<div class="eyebrow">a little letter, just for you</div><h1 style="font-size:52px">A Letter for You</h1><p class="sub" id="helloText">Ada surat yang menunggumu.</p>
+<div class="envelope-wrap" id="envelope" role="button" tabindex="0" aria-label="Buka amplop"><div class="peek">for someone special</div><div class="envelope"><div class="flap"></div><div class="seal">✿</div></div></div>
+<button id="openBtn">Buka surat</button><div class="status" id="letterStatus"></div>
+</div></section>
+<section class="screen hidden" id="letterView"><article class="paper">
+<header class="paperhead"><div class="flower">❀</div><div class="eyebrow">a letter, from my heart</div><h2>Untukmu</h2><div class="to" id="recipientName"></div></header>
+<div class="bodycopy" id="letterBody"></div><div class="gallery" id="gallery"></div>
+<div class="closing">With warmth,</div><div class="sign" id="senderName"></div>
+<div class="note" style="text-align:center;margin-top:35px;letter-spacing:.12em">A SMALL LETTER, TO BE KEPT</div>
+</article></section>
+</main><script type="module" src="./letter.js"></script></body></html>

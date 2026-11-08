@@ -1,0 +1,8 @@
+PERBAIKAN PENTING PADA V2 STARTER
+1. Foto: SQL kini mengembalikan nama object, lalu letter.js membentuk URL foto dari Project URL.
+2. Hash token: menggunakan extensions.digest agar sesuai dengan instalasi pgcrypto di Supabase.
+3. Pembuatan surat: admin.js kini menyimpan token_value yang diwajibkan tabel dan dibutuhkan tombol Salin link.
+4. Konfigurasi kosong: halaman tidak langsung crash ketika config.js belum diisi; admin menampilkan pesan konfigurasi.
+5. Panduan setup diperjelas.
+
+Tetap lakukan setup Supabase dan config.js sebelum website digunakan sungguhan.

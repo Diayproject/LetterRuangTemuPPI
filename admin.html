@@ -1,0 +1,27 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A Letter for You — Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#fffaf5;--ink:#59494a;--muted:#9b8584;--line:#ead9d4}*{box-sizing:border-box}
+body{margin:0;padding:24px 14px;background:linear-gradient(145deg,#f7eeea,#f3e6e3);font-family:'DM Sans',sans-serif;color:var(--ink)}
+main{max-width:1000px;margin:auto}.head{text-align:center;margin:15px 0 25px}.eyebrow{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+h1,h2{font-family:'Cormorant Garamond',serif;font-weight:400;color:#76575b}h1{font-size:48px;margin:8px}h2{font-size:30px;margin:0 0 15px}
+.card{background:var(--paper);border:1px solid var(--line);padding:22px;margin:15px 0;box-shadow:0 12px 35px #795b5b10;border-radius:5px}
+input,textarea,button{font:inherit}input,textarea{width:100%;padding:12px;border:1px solid #e5d2ce;border-radius:8px;margin:6px 0 14px;background:#fffdfa;color:var(--ink)}textarea{min-height:210px;resize:vertical;line-height:1.6}
+label{font-size:12px;color:#80696b}button{border:0;border-radius:30px;padding:11px 18px;background:#93676e;color:white;cursor:pointer;font-size:12px;margin:4px 5px 4px 0}button.secondary{background:#eee1dc;color:#76575b}button.danger{background:#a4545b}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.status,.muted{font-size:12px;color:var(--muted);line-height:1.6;min-height:20px}table{width:100%;border-collapse:collapse;font-size:13px}td,th{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}th{color:#896b6e;font-weight:500}.hidden{display:none!important}.tablewrap{overflow:auto}
+@media(max-width:620px){.row{grid-template-columns:1fr}table{min-width:680px}}
+</style></head><body><main>
+<header class="head"><div class="eyebrow">private workspace</div><h1>A Letter for You</h1><div class="muted">Dashboard pengelolaan surat personal</div></header>
+<section class="card" id="loginCard"><h2>Admin login</h2><form id="loginForm"><label>Email admin</label><input id="adminEmail" type="email" required><label>Password</label><input id="adminPassword" type="password" required><button type="submit">Masuk dashboard</button></form><div id="loginStatus" class="status"></div></section>
+<section id="dashboard" class="hidden">
+<div class="card"><div class="row" style="align-items:center"><div><h2>Daftar surat</h2><div class="muted">Tambah peserta, edit surat, unggah foto, dan salin link.</div></div><div style="text-align:right"><button id="newBtn">+ Buat surat baru</button><button class="secondary" id="logoutBtn">Keluar</button></div></div><div id="dashStatus" class="status"></div><div class="tablewrap"><table><thead><tr><th>Nama</th><th>Email (catatan admin)</th><th>Status</th><th>Link personal</th><th>Aksi</th></tr></thead><tbody id="letterRows"></tbody></table></div></div>
+<div class="card hidden" id="editor"><h2 id="editorTitle">Buat surat</h2><form id="letterForm">
+<input type="hidden" id="letterId"><div class="row"><div><label>Nama penerima</label><input id="recipientName" required></div><div><label>Email (opsional, hanya catatan admin)</label><input id="recipientEmail" type="email"></div></div>
+<label>Isi surat</label><textarea id="body" required placeholder="Tuliskan surat personal untuk penerima…"></textarea>
+<label>Nama pengirim / penutup</label><input id="senderName" placeholder="Nama pengirim">
+<label>Foto (pilih beberapa sekaligus)</label><input id="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+<div class="muted">Maksimum 5 MB per foto. Foto tersimpan di bucket publik; tautan surat bersifat rahasia seperti kata sandi. Siapa pun yang menerima tautan dapat membukanya.</div>
+<label style="display:flex;align-items:center;gap:8px;margin-top:12px"><input id="published" type="checkbox" style="width:auto;margin:0"> Terbitkan surat agar link dapat dibuka</label>
+<div style="margin-top:15px"><button type="submit">Simpan surat</button><button type="button" class="secondary" id="cancelBtn">Batal</button></div>
+</form><div id="formStatus" class="status"></div></div>
+</section></main><script type="module" src="./admin.js"></script></body></html>
